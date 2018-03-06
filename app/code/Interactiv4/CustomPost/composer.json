@@ -1,0 +1,25 @@
+{
+    "name": "interactiv4/custompost",
+    "description": "Magento 2 module extension attributes",
+    "authors": [
+        {
+            "name": "Interactiv4",
+            "email": "info@interactiv4.com",
+            "homepage": "http://interactiv4.com",
+            "role": "Developer"
+        }
+    ],
+    "type": "magento2-module",
+    "require": {
+        "php": "~7.0.0",
+        "interactiv4/post": "^1.0.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Interactiv4\\CustomPost\\": ""
+        }
+    }
+}
