@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Interactiv4 Team
- * @copyright  Copyright © Interactiv4 (https://www.interactiv4.com)
+ * @copyright Copyright © Interactiv4 (https://www.interactiv4.com)
  */
 
 namespace Interactiv4\CustomPost\Model;
@@ -18,9 +18,11 @@ class Post extends AbstractExtensibleModel implements PostInterface
 {
     /**
      * @inheritdoc
+     * @codingStandardsIgnoreStart
      */
     protected function _construct()
     {
+        // @codingStandardsIgnoreEnd
         $this->_init(ResourceModelPost::class);
     }
 
@@ -37,7 +39,7 @@ class Post extends AbstractExtensibleModel implements PostInterface
      */
     public function setPostId($postId)
     {
-        $this->setData(self::FIELD_POST_ID, $postId);
+        return $this->setData(self::FIELD_POST_ID, $postId);
     }
 
     /**
@@ -53,7 +55,7 @@ class Post extends AbstractExtensibleModel implements PostInterface
      */
     public function setShortDescription($shortDescription)
     {
-        $this->setData(self::FIELD_SHORT_DESCRIPTION, $shortDescription);
+        return $this->setData(self::FIELD_SHORT_DESCRIPTION, $shortDescription);
     }
 
     /**
@@ -69,6 +71,6 @@ class Post extends AbstractExtensibleModel implements PostInterface
      */
     public function setExtensionAttributes(PostExtensionInterface $extensionAttributes)
     {
-        $this->_setExtensionAttributes($extensionAttributes);
+        return $this->_setExtensionAttributes($extensionAttributes);
     }
 }

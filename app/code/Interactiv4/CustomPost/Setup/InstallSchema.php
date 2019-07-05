@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Interactiv4 Team
- * @copyright  Copyright © Interactiv4 (https://www.interactiv4.com)
+ * @copyright Copyright © Interactiv4 (https://www.interactiv4.com)
  */
 
 namespace Interactiv4\CustomPost\Setup;
@@ -13,6 +13,7 @@ use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
+use Zend_Db_Exception;
 
 /**
  * Class InstallSchema
@@ -40,7 +41,7 @@ class InstallSchema implements InstallSchemaInterface
      * Create table relations between custom entity and custom post
      *
      * @param SchemaSetupInterface $installer
-     * @throws \Zend_Db_Exception
+     * @throws Zend_Db_Exception
      */
     private function installTableCustomPost(SchemaSetupInterface $installer)
     {

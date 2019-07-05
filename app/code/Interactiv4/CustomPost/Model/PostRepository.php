@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Interactiv4 Team
- * @copyright  Copyright © Interactiv4 (https://www.interactiv4.com)
+ * @copyright Copyright © Interactiv4 (https://www.interactiv4.com)
  */
 
 namespace Interactiv4\CustomPost\Model;
@@ -31,11 +31,12 @@ use Magento\Framework\Exception\ValidatorException;
 
 /**
  * Class PostRepository
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class PostRepository implements PostRepositoryInterface
 {
     /**
-     * @var ResourceCustomPost $resourceCustomPost
+     * @var ResourceCustomPost
      */
     private $resourceCustomPost;
 
@@ -97,6 +98,7 @@ class PostRepository implements PostRepositoryInterface
      * @param FilterBuilder $filterBuilder
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param SortOrder $sortOrder
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
         ResourceCustomPost $resourceCustomPost,
@@ -110,16 +112,16 @@ class PostRepository implements PostRepositoryInterface
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SortOrder $sortOrder
     ) {
-        $this->resourceCustomPost = $resourceCustomPost;
-        $this->customPostFactory = $customPostFactory;
-        $this->customPostCollectionFactory = $customPostCollectionFactory;
+        $this->resourceCustomPost                     = $resourceCustomPost;
+        $this->customPostFactory                      = $customPostFactory;
+        $this->customPostCollectionFactory            = $customPostCollectionFactory;
         $this->customPostSearchResultInterfaceFactory = $customPostSearchResultInterfaceFactory;
-        $this->collectionProcessor = $collectionProcessor;
-        $this->extensionAttributesJoinProcessor = $extensionAttributesJoinProcessor;
-        $this->entityRepository = $entityRepository;
-        $this->filterBuilder = $filterBuilder;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->sortOrder = $sortOrder;
+        $this->collectionProcessor                    = $collectionProcessor;
+        $this->extensionAttributesJoinProcessor       = $extensionAttributesJoinProcessor;
+        $this->entityRepository                       = $entityRepository;
+        $this->filterBuilder                          = $filterBuilder;
+        $this->searchCriteriaBuilder                  = $searchCriteriaBuilder;
+        $this->sortOrder                              = $sortOrder;
     }
 
     /**
@@ -163,8 +165,6 @@ class PostRepository implements PostRepositoryInterface
         $customPostId = $customPost->getId();
         try {
             $this->resourceCustomPost->delete($customPost);
-        } catch (ValidatorException $e) {
-            throw new CouldNotSaveException(__($e->getMessage()));
         } catch (Exception $e) {
             throw new StateException(
                 __('Unable to remove custom post %1', $customPostId)

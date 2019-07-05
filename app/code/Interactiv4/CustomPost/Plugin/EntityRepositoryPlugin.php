@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Interactiv4 Team
- * @copyright  Copyright © Interactiv4 (https://www.interactiv4.com)
+ * @copyright Copyright © Interactiv4 (https://www.interactiv4.com)
  */
 
 namespace Interactiv4\CustomPost\Plugin;
@@ -50,19 +50,18 @@ class EntityRepositoryPlugin
         PostRepositoryInterface $customPostRepository
     ) {
         $this->entityExtensionFactory = $entityExtensionFactory;
-        $this->customPostFactory = $customPostFactory;
-        $this->customPostRepository = $customPostRepository;
+        $this->customPostFactory      = $customPostFactory;
+        $this->customPostRepository   = $customPostRepository;
     }
 
     /**
      * @param EntityRepositoryInterface $subject
      * @param EntityInterface $result
      * @return EntityInterface
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterGet(
-        EntityRepositoryInterface $subject,
-        EntityInterface $result
-    ) {
+    public function afterGet(EntityRepositoryInterface $subject, EntityInterface $result)
+    {
         /** @var EntityExtensionInterface $extensionAttributes */
         $extensionAttributes = $result->getExtensionAttributes() ?: $this->entityExtensionFactory->create();
 
@@ -86,10 +85,8 @@ class EntityRepositoryPlugin
      * @param EntitySearchResultsInterface $entities
      * @return EntitySearchResultsInterface
      */
-    public function afterGetList(
-        EntityRepositoryInterface $subject,
-        EntitySearchResultsInterface $entities
-    ) {
+    public function afterGetList(EntityRepositoryInterface $subject, EntitySearchResultsInterface $entities)
+    {
         foreach ($entities->getItems() as $entity) {
             $this->afterGet($subject, $entity);
         }
@@ -102,11 +99,10 @@ class EntityRepositoryPlugin
      * @param EntityInterface $result
      * @return EntityInterface
      * @throws CouldNotSaveException
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterSave(
-        EntityRepositoryInterface $subject,
-        EntityInterface $result
-    ) {
+    public function afterSave(EntityRepositoryInterface $subject, EntityInterface $result)
+    {
         $extensionAttributes = $result->getExtensionAttributes() ?: $this->entityExtensionFactory->create();
         if ($extensionAttributes !== null &&
             $extensionAttributes->getShortDescription() !== null
